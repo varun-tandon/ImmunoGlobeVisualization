@@ -13,14 +13,14 @@ $(function(){
   // get exported json from cytoscape desktop via ajax
   var graphP = $.ajax({
     // url: 'https://cdn.rawgit.com/maxkfranz/3d4d3c8eb808bd95bae7/raw', // wine-and-cheese.json
-    url: 'http://127.0.0.1:8887/networks.json',
+    url: './networks.json',
     type: 'GET',
     dataType: 'json'
   });
 
   // also get style via ajax
   var styleP = $.ajax({
-    url: 'http://127.0.0.1:8887/style.cycss', // wine-and-cheese-style.cycss
+    url: './style.cycss', // wine-and-cheese-style.cycss
     type: 'GET',
     dataType: 'text'
   });
