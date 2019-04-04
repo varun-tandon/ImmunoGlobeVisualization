@@ -527,7 +527,7 @@ $(function(){
     },
 
     hide: {
-      event: 'unfocus'
+      event: 'click'
     },
 
     style: {

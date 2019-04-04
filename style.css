@@ -255,3 +255,10 @@ body.calc #loading {
 .filterset-title {
   margin: 0.25em 0 0.25em 0.25em;
 }
+
+.color-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ccc;
+}

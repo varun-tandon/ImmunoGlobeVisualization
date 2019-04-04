@@ -4,15 +4,15 @@ core {
 }
 
 edge {
-	curve-style: straight;
+	curve-style: bezier;
 	haystack-radius: 0;
 	opacity: 0.333;
 	width: 2;
 	z-index: 0;
 	overlay-opacity: 0;
   	events: no;
-  	mid-target-arrow-shape: triangle;
-	mid-target-arrow-color: black;
+  	target-arrow-shape: triangle;
+	target-arrow-color: black;
 	target-arrow-fill: fill;
 	arrow-scale: 1;
 }
