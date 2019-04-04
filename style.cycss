@@ -30,10 +30,30 @@ node {
 }
 
 edge[interaction = "Activate"] {
-	line-color: #FACD37;
-	opacity: 0.666;
-	z-index: 9;
-	width: 4;
+	line-color: #55efc4;
+}
+
+edge[interaction = "Differentiate"] {
+	line-color: #ffeaa7;
+}
+
+edge[interaction = "Kill"] {
+	line-color: #fab1a0;
+}
+edge[interaction = "Inhibit"] {
+	line-color: #74b9ff;
+}
+edge[interaction = "Polarize"] {
+	line-color: #ff7675;
+}
+edge[interaction = "Recruit"] {
+	line-color: #a29bfe;
+}
+edge[interaction = "Secrete"] {
+	line-color: #fd79a8;
+}
+edge[interaction = "Survive"] {
+	line-color: #dfe6e9;
 }
 
 node[Node_Type = "Antigen"],
@@ -49,17 +69,11 @@ node[Node_Type = "Cell"] {
 	text-outline-color: #247BA0;
 }
 
-edge[interaction = "Differentiate"] {
-	line-color: white;
-}
+
 
 node[Node_Type = "Cytokine"] {
 	background-color: #70C1B3;
 	text-outline-color: #70C1B3;
-}
-
-edge[interaction = "Kill"] {
-	line-color: #DE3128;
 }
 
 node[Node_Type = "EffectorMolecule"] {
