@@ -53,39 +53,65 @@
   </div>
 
   <div id="filters">
-    <div class="filterset-section-title">Cheese</div>
+    <div class="filterset-section-title">Node Types</div>
 
     <div class="filtersets">
       <div class="filterset">
-        <div class="filterset-title">Moisture</div>
-        <input id="soft" type="checkbox" checked></input><label for="soft">Soft</label><br />
-        <input id="semi-soft" type="checkbox" checked></input><label for="semi-soft">Semi-soft</label><br />
-        <input id="semi-hard" type="checkbox" checked></input><label for="semi-hard">Semi-hard</label><br />
-        <input id="hard" type="checkbox" checked></input><label for="hard">Hard</label><br />
-        <input id="na" type="checkbox" checked></input><label for="na">Other</label><br />
+        <input id="cell" type="checkbox" checked></input><label for="cell">Cell</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="somatic" type="checkbox" checked></input><label for="somatic">Somatic</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="lymphocyte" type="checkbox" checked></input><label for="lymphocyte">Lymphocyte</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="myeloid" type="checkbox" checked></input><label for="myeloid">Myeloid</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="precursor" type="checkbox" checked></input><label for="precursor">Precursor</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="apc" type="checkbox" checked></input><label for="apc">APC</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="blood" type="checkbox" checked></input><label for="blood">Blood</label><br />
+      </div>
+      <div class="filterset">
+        <input id="cytokine" type="checkbox" checked></input><label for="cytokine">Cytokine</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="chemokine" type="checkbox" checked></input><label for="chemokine">Chemokine</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="csf" type="checkbox" checked></input><label for="csf">Colony-stimulating factors</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="interferons" type="checkbox" checked></input><label for="interferons">Interferons</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="interleukins" type="checkbox" checked></input><label for="interleukins">Interleukins</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="tnf" type="checkbox" checked></input><label for="tnf">Tumor Necrosis Factors</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="gf" type="checkbox" checked></input><label for="gf">Growth Factors</label><br />
+      </div>
+      <div class="filterset">
+          <input id="antibody" type="checkbox" checked></input><label for="antibody">Antibody</label><br />
+        </div>
+      <div class="filterset">
+        <input id="effmol" type="checkbox" checked></input><label for="effmol">Effector Molecule</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="complement" type="checkbox" checked></input><label for="complement">Complement</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="lipmed" type="checkbox" checked></input><label for="lipmed">Lipid Mediators</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="toxmed" type="checkbox" checked></input><label for="toxmed">Toxic Mediators</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="ros" type="checkbox" checked></input><label for="ros">Reactive Oxygen Species</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="antipep" type="checkbox" checked></input><label for="antipep">Antimicrobial Peptides</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="app" type="checkbox" checked></input><label for="app">Acute Phase Proteins</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="cytoeffectors" type="checkbox" checked></input><label for="cytoeffectors">Cytotoxic Effectors</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="metabolite" type="checkbox" checked></input><label for="metabolite">Metabolite</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="enzymes" type="checkbox" checked></input><label for="enzymes">Enzymes</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="vitamins" type="checkbox" checked></input><label for="vitamins">Vitamins</label><br />
       </div>
       <div class="filterset right">
-        <div class="filterset-title">Country</div>
-        <input id="chs-en" type="checkbox" checked></input><label for="chs-en">England</label><br />
-        <input id="chs-fr" type="checkbox" checked></input><label for="chs-fr">France</label><br />
-        <input id="chs-it" type="checkbox" checked></input><label for="chs-it">Italy</label><br />
-        <input id="chs-usa" type="checkbox" checked></input><label for="chs-us">USA</label><br />
-        <input id="chs-es" type="checkbox" checked></input><label for="chs-es">Spain</label><br />
-        <input id="chs-ch" type="checkbox" checked></input><label for="chs-ch">Switzerland</label><br />
-        <input id="chs-euro" type="checkbox" checked></input><label for="chs-euro">Other Europe</label><br />
-        <input id="chs-nworld" type="checkbox" checked></input><label for="chs-nworld">Other New World</label><br />
-        <input id="chs-na" type="checkbox" checked></input><label for="chs-na">Other</label><br />
+        <input id="antigen" type="checkbox" checked></input><label for="antigen">Antigen</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="bacteria" type="checkbox" checked></input><label for="bacteria">Bacteria</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="fungi" type="checkbox" checked></input><label for="fungi">Fungi</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="virus" type="checkbox" checked></input><label for="virus">Virus</label><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<input id="self" type="checkbox" checked></input><label for="self">Self</label><br />
       </div>
     </div>
 
-    <div class="filterset-section-title">Drink</div>
+    <div class="filterset-section-title">Edge Types</div>
 
     <div class="filtersets">
       <div class="filterset">
         <!-- <div class="filterset-title">Type</div> -->
-        <input id="white" type="checkbox" checked></input><label for="white">White wine</label><br />
-        <input id="red" type="checkbox" checked></input><label for="red">Red wine</label><br />
-        <input id="cider" type="checkbox" checked></input><label for="cider">Cider</label>
+        <input id="activate" type="checkbox" checked></input><label for="activate">activate</label><br />
+        <input id="differentiate" type="checkbox" checked></input><label for="differentiate">differentiate</label><br />
+        <input id="inhibit" type="checkbox" checked></input><label for="inhibit">inhibit</label><br />
+        <input id="kill" type="checkbox" checked></input><label for="kill">kill</label><br />
+        <input id="polarize" type="checkbox" checked></input><label for="polarize">polarize</label><br />
+        <input id="recruit" type="checkbox" checked></input><label for="recruit">recruit</label><br />
+        <input id="secrete" type="checkbox" checked></input><label for="secrete">secrete</label><br />
+        <input id="survive" type="checkbox" checked></input><label for="survive">survive</label><br />        
       </div>
     </div>
 

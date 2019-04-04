@@ -12,25 +12,23 @@ $(function(){
 
   // get exported json from cytoscape desktop via ajax
   var graphP = $.ajax({
-    url: 'https://cdn.rawgit.com/maxkfranz/3d4d3c8eb808bd95bae7/raw', // wine-and-cheese.json
-    // url: './data.json',
+    // url: 'https://cdn.rawgit.com/maxkfranz/3d4d3c8eb808bd95bae7/raw', // wine-and-cheese.json
+    url: 'http://127.0.0.1:8887/networks.json',
     type: 'GET',
     dataType: 'json'
   });
 
   // also get style via ajax
   var styleP = $.ajax({
-    url: './style.cycss', // wine-and-cheese-style.cycss
+    url: 'http://127.0.0.1:8887/style.cycss', // wine-and-cheese-style.cycss
     type: 'GET',
     dataType: 'text'
   });
 
+  // templating for top left information
   var infoTemplate = Handlebars.compile([
     '<p class="ac-name">{{name}}</p>',
-    '<p class="ac-node-type"><i class="fa fa-info-circle"></i> {{NodeTypeFormatted}} {{#if Type}}({{Type}}){{/if}}</p>',
-    '{{#if Milk}}<p class="ac-milk"><i class="fa fa-angle-double-right"></i> {{Milk}}</p>{{/if}}',
-    '{{#if Country}}<p class="ac-country"><i class="fa fa-map-marker"></i> {{Country}}</p>{{/if}}',
-    '<p class="ac-more"><i class="fa fa-external-link"></i> <a target="_blank" href="https://duckduckgo.com/?q={{name}}">More information</a></p>'
+    '<p class="ac-node-type"><i class="fa fa-info-circle"></i> {{Node_Type}} {{#if Type}}({{Type}}){{/if}}</p>'
   ].join(''));
 
   // when both graph export json and style loaded, init cy
@@ -231,13 +229,7 @@ $(function(){
     elements.nodes.forEach(function(n){
       var data = n.data;
 
-      data.NodeTypeFormatted = data.NodeType;
-
-      if( data.NodeTypeFormatted === 'RedWine' ){
-        data.NodeTypeFormatted = 'Red Wine';
-      } else if( data.NodeTypeFormatted === 'WhiteWine' ){
-        data.NodeTypeFormatted = 'White Wine';
-      }
+      data.NodeTypeFormatted = data.Node_Type;
 
       n.data.orgPos = {
         x: n.position.x,
@@ -309,14 +301,16 @@ $(function(){
         return str.match( q );
       }
 
-      var fields = ['name', 'NodeType', 'Country', 'Type', 'Milk'];
+      var fields = ['name', 'Node_Type' , 'shared_name'];
 
       function anyFieldMatches( n ){
         for( var i = 0; i < fields.length; i++ ){
           var f = fields[i];
-
           if( matches( n.data(f), query ) ){
+            n.addClass('highlighted');
             return true;
+          } else {
+            n.removeClass('highlighted');
           }
         }
 
@@ -389,30 +383,52 @@ $(function(){
 
   $('#filters').on('click', 'input', function(){
 
-    var soft = $('#soft').is(':checked');
-    var semiSoft = $('#semi-soft').is(':checked');
-    var na = $('#na').is(':checked');
-    var semiHard = $('#semi-hard').is(':checked');
-    var hard = $('#hard').is(':checked');
+    // Cell Types
+    var cell = $('#cell').is(':checked');
+    var somatic = $('#somatic').is(':checked');
+    var lymphocyte = $('#lymphocyte').is(':checked');
+    var myeloid = $('#myeloid').is(':checked');
+    var precursor = $('#precursor').is(':checked');
+    var apc = $('#apc').is(':checked');
+    var blood = $('#blood').is(':checked');
 
-    var red = $('#red').is(':checked');
-    var white = $('#white').is(':checked');
-    var cider = $('#cider').is(':checked');
+    // Cytokine
+    var cytokine = $('#cytokine').is(':checked');
+    var chemokine = $('#chemokine').is(':checked');
+    var csf = $('#csf').is(':checked');
+    var interferons = $('#interferons').is(':checked');
+    var interleukins = $('#interleukins').is(':checked');
+    var tnf = $('#tnf').is(':checked');
+    var gf = $('#gf').is(':checked');
 
-    var england = $('#chs-en').is(':checked');
-    var france = $('#chs-fr').is(':checked');
-    var italy = $('#chs-it').is(':checked');
-    var usa = $('#chs-usa').is(':checked');
-    var spain = $('#chs-es').is(':checked');
-    var switzerland = $('#chs-ch').is(':checked');
-    var euro = $('#chs-euro').is(':checked');
-    var newWorld = $('#chs-nworld').is(':checked');
-    var naCountry = $('#chs-na').is(':checked');
+    // Effector Molecules
+    var effmol = $('#effmol').is(':checked');
+    var complement = $('#complement').is(':checked');
+    var lipmed = $('#lipmed').is(':checked');
+    var toxmed = $('#toxmed').is(':checked');
+    var ros = $('#ros').is(':checked');
+    var antipep = $('#antipep').is(':checked');
+    var app = $('#app').is(':checked');
+    var cytoeffectors = $('#cytoeffectors').is(':checked');
+    var metabolite = $('#metabolite').is(':checked');
+    var enzymes = $('#enzymes').is(':checked');
+    var vitamins = $('#vitamins').is(':checked');
+
+    // Antigen
+    var antigen = $('#antigen').is(':checked');
+    var bacteria = $('#bacteria').is(':checked');
+    var fungi = $('#fungi').is(':checked');
+    var virus = $('#virus').is(':checked');
+    var self = $('#self').is(':checked');
+
+    // Antibody
+    var antibody = $('#antibody').is(':checked');
+    
 
     cy.batch(function(){
 
       allNodes.forEach(function( n ){
-        var type = n.data('NodeType');
+        var type = n.data('Node_Type');
 
         n.removeClass('filtered');
 
@@ -420,45 +436,76 @@ $(function(){
           n.addClass('filtered');
         };
 
-        if( type === 'Cheese' || type === 'CheeseType' ){
+        if( type === 'Cell'){
 
-          var cType = n.data('Type');
-          var cty = n.data('Country');
+          var cType = n.data('Node_Subtype');
 
           if(
             // moisture
-               (cType === 'Soft' && !soft)
-            || (cType === 'Semi-soft' && !semiSoft)
-            || (cType === undefined && !na)
-            || (cType === 'Semi-hard' && !semiHard)
-            || (cType === 'Hard' && !hard)
+               !cell
+            || (cType === 'Somatic' && !somatic)
+            || (cType === 'Lymphocyte' && !lymphocyte)
+            || (cType === 'Myleoid' && !myeloid)
+            || (cType === 'Precursor' && !precursor)
+            || (cType === 'APC' && !apc)
+            || (cType === 'Blood' && !blood)
 
-            // country
-            || (cty === 'England' && !england)
-            || (cty === 'France' && !france)
-            || (cty === 'Italy' && !italy)
-            || (cty === 'US' && !usa)
-            || (cty === 'Spain' && !spain)
-            || (cty === 'Switzerland' && !switzerland)
-            || ( (cty === 'Holland' || cty === 'Ireland' || cty === 'Portugal' || cty === 'Scotland' || cty === 'Wales') && !euro )
-            || ( (cty === 'Canada' || cty === 'Australia') && !newWorld )
-            || (cty === undefined && !naCountry)
+
           ){
             filter();
           }
 
-        } else if( type === 'RedWine' ){
+        } else if( type === 'Cytokine'){
 
-          if( !red ){ filter(); }
+          var cType = n.data('Node_Subtype');
+          if(
+                !cytokine
+            || (cType === 'Chemokine' && !chemokine)
+            || (cType === 'Colony-stimulating factors' && !csf)
+            || (cType === 'Interferons' && !interferons)
+            || (cType === 'Interleukins' && !interleukins)
+            || (cType === 'Tumor Necrosis Factors' && !tnf)
+            || (cType === 'Growth Factors' && !gf)
 
-        } else if( type === 'WhiteWine' ){
+          ){
+            filter();
+          }
 
-          if( !white ){ filter(); }
+        } else if( type === 'EffectorMolecule'){
 
-        } else if( type === 'Cider' ){
+          var cType = n.data('Node_Subtype');
+          if(
+            !effmol ||
+            (cType === 'Complement' && !complement) ||
+            (cType === 'Lipid Mediators' && !lipmed) ||
+            (cType === 'Toxic Mediators' && !toxmed) ||
+            (cType === 'Reactive Oxygen Species' && !ros) ||
+            (cType === 'Antimicrobial Peptides' && !antipep) ||
+            (cType === 'Acute Phase Proteins' && !app) ||
+            (cType === 'Cytotoxic Effectors' && !cytoeffectors) ||
+            (cType === 'Metabolite' && !metabolite) ||
+            (cType === 'Enzymes' && !enzymes) ||
+            (cType === 'Vitamins' && !vitamins)
 
-          if( !cider ){ filter(); }
+          ){
+            filter();
+          }
 
+        } else if( type === 'Antigen'){
+          var cType = n.data('Node_Subtype');
+          if(
+            !antigen ||
+            (cType === 'Bacteria' && !bacteria) ||
+            (cType === 'Fungi' && !fungi) ||
+            (cType === 'Virus' && !virus) ||
+            (cType === 'Self' && !self)
+          ) {
+            filter();
+          }
+        } else if (type === 'Antibody') {
+          if (!antibody) {
+            filter();
+          }
         }
 
       });

@@ -29,42 +29,42 @@ node {
 	overlay-color: #fff;
 }
 
-edge[interaction = "cc"] {
+edge[interaction = "Activate"] {
 	line-color: #FACD37;
 	opacity: 0.666;
 	z-index: 9;
 	width: 4;
 }
 
-node[NodeType = "Cheese"],
-node[NodeType = "CheeseType"] {
-	background-color: #FACD37;
-	text-outline-color: #FACD37;
+node[Node_Type = "Antigen"],
+node[Node_Type = "Antibody"] {
+	background-color: #B2DBBF;
+	text-outline-color: #B2DBBF;
 	width: mapData(Quality, 70, 100, 20, 50);
 	height: mapData(Quality, 70, 100, 20, 50);
 }
 
-node[NodeType = "WhiteWine"] {
-	background-color: white;
-	text-outline-color: white;
+node[Node_Type = "Cell"] {
+	background-color: #247BA0;
+	text-outline-color: #247BA0;
 }
 
-edge[interaction = "cw"] {
+edge[interaction = "Differentiate"] {
 	line-color: white;
 }
 
-node[NodeType = "RedWine"] {
-	background-color: #DE3128;
-	text-outline-color: #DE3128;
+node[Node_Type = "Cytokine"] {
+	background-color: #70C1B3;
+	text-outline-color: #70C1B3;
 }
 
-edge[interaction = "cr"] {
+edge[interaction = "Kill"] {
 	line-color: #DE3128;
 }
 
-node[NodeType = "Cider"] {
-	background-color: #A4EB34;
-	text-outline-color: #A4EB34;
+node[Node_Type = "EffectorMolecule"] {
+	background-color: #F3FFBD;
+	text-outline-color: #F3FFBD;
 }
 
 node.highlighted {
@@ -95,7 +95,8 @@ edge.faded {
 }
 
 .highlighted {
-
+	background-color: #FF1654;
+	text-outline-color: #FF1654;
 }
 
 node:selected {
