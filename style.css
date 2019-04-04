@@ -12,7 +12,7 @@ html, body {
   position: absolute;
   left: 0;
   top: 0;
-  background: #000;
+  background: #fff;
 }
 
 #loading {
@@ -115,9 +115,9 @@ body.calc #loading {
 }
 
 .ac-node-type,
-.ac-milk,
-.ac-country,
-.ac-more {
+.ac-node-suid,
+.ac-node-subtype
+{
   font-size: 0.8em;
 }
 

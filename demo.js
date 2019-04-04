@@ -1,5 +1,5 @@
 /*
-This demo visualises wine and cheese pairings.
+This demo visualises immune systems.
 */
 
 $(function(){
@@ -12,7 +12,6 @@ $(function(){
 
   // get exported json from cytoscape desktop via ajax
   var graphP = $.ajax({
-    // url: 'https://cdn.rawgit.com/maxkfranz/3d4d3c8eb808bd95bae7/raw', // wine-and-cheese.json
     url: './networks.json',
     type: 'GET',
     dataType: 'json'
@@ -20,7 +19,7 @@ $(function(){
 
   // also get style via ajax
   var styleP = $.ajax({
-    url: './style.cycss', // wine-and-cheese-style.cycss
+    url: './style.cycss',
     type: 'GET',
     dataType: 'text'
   });
@@ -28,7 +27,9 @@ $(function(){
   // templating for top left information
   var infoTemplate = Handlebars.compile([
     '<p class="ac-name">{{name}}</p>',
-    '<p class="ac-node-type"><i class="fa fa-info-circle"></i> {{Node_Type}} {{#if Type}}({{Type}}){{/if}}</p>'
+    '<p class="ac-node-type">Type: {{Node_Type}}', 
+    '<p class="ac-node-suid">SUID: {{SUID}}', 
+    '<p class="ac-node-subtype ">Subtype: {{Node_Subtype}}'
   ].join(''));
 
   // when both graph export json and style loaded, init cy
@@ -95,7 +96,7 @@ $(function(){
       var p = node.data('orgPos');
 
       var l = nhood.filter(':visible').makeLayout({
-        name: 'concentric',
+        name: 'preset',
         fit: false,
         animate: true,
         animationDuration: aniDur,
@@ -107,13 +108,6 @@ $(function(){
           y2: p.y + 1
         },
         avoidOverlap: true,
-        concentric: function( ele ){
-          if( ele.same( node ) ){
-            return 2;
-          } else {
-            return 1;
-          }
-        },
         levelWidth: function(){ return 1; },
         padding: layoutPadding
       });
@@ -288,7 +282,7 @@ $(function(){
   var lastSearch = '';
 
   $('#search').typeahead({
-    minLength: 2,
+    minLength: 0,
     highlight: true,
   },
   {
@@ -297,7 +291,9 @@ $(function(){
       function matches( str, q ){
         str = (str || '').toLowerCase();
         q = (q || '').toLowerCase();
-
+        if (q == '') {
+          return false;
+        }
         return str.match( q );
       }
 
@@ -307,10 +303,12 @@ $(function(){
         for( var i = 0; i < fields.length; i++ ){
           var f = fields[i];
           if( matches( n.data(f), query ) ){
-            n.addClass('highlighted');
+            n.addClass('colorRed');
+            n.addClass('selected');
             return true;
           } else {
-            n.removeClass('highlighted');
+            n.removeClass('colorRed');
+            n.removeClass('selected');
           }
         }
 

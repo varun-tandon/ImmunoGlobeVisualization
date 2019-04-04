@@ -4,13 +4,17 @@ core {
 }
 
 edge {
-	curve-style: haystack;
+	curve-style: straight;
 	haystack-radius: 0;
 	opacity: 0.333;
 	width: 2;
 	z-index: 0;
 	overlay-opacity: 0;
-  events: no;
+  	events: no;
+  	mid-target-arrow-shape: triangle;
+	mid-target-arrow-color: black;
+	target-arrow-fill: fill;
+	arrow-scale: 1;
 }
 
 node {
@@ -56,34 +60,36 @@ edge[interaction = "Survive"] {
 	line-color: #dfe6e9;
 }
 
-node[Node_Type = "Antigen"],
-node[Node_Type = "Antibody"] {
-	background-color: #B2DBBF;
-	text-outline-color: #B2DBBF;
+node[Node_Type = "Antigen"] {
+	background-color: #ff9ff3;
+	text-outline-color: #ff9ff3;
 	width: mapData(Quality, 70, 100, 20, 50);
 	height: mapData(Quality, 70, 100, 20, 50);
+	shape: triangle;
 }
 
+node[Node_Type = "Antibody"],
 node[Node_Type = "Cell"] {
-	background-color: #247BA0;
-	text-outline-color: #247BA0;
+	background-color: #c7ecee;
+	text-outline-color: #c7ecee;
+	shape: ellipse;
 }
-
-
 
 node[Node_Type = "Cytokine"] {
-	background-color: #70C1B3;
-	text-outline-color: #70C1B3;
+	background-color: #badc58;
+	text-outline-color: #badc58;
+	shape: diamond;
 }
 
 node[Node_Type = "EffectorMolecule"] {
-	background-color: #F3FFBD;
-	text-outline-color: #F3FFBD;
+	background-color: #f6e58d;
+	text-outline-color: #f6e58d;
+	shape: round-rectangle;
 }
 
 node.highlighted {
 	min-zoomed-font-size: 0;
-  z-index: 9999;
+  	z-index: 9999;
 }
 
 edge.highlighted {
@@ -109,8 +115,7 @@ edge.faded {
 }
 
 .highlighted {
-	background-color: #FF1654;
-	text-outline-color: #FF1654;
+
 }
 
 node:selected {
@@ -123,4 +128,10 @@ node:selected {
 
 .filtered {
 	display: none;
+}
+
+.colorRed {
+	background-color: #ff7979;
+	text-outline-color: #ff7979;
+	border-color: #ff7979;
 }
