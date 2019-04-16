@@ -148,7 +148,8 @@ body.calc #loading {
 
 #reset,
 #filter,
-#about {
+#about, 
+#new_network_tools {
   width: 3em;
   margin: 0.5em;
   position: absolute;
@@ -158,6 +159,11 @@ body.calc #loading {
 #reset {
   top: 0;
   right: 0;
+}
+
+#new_network_tools {
+  top: 0;
+  right: 8em;
 }
 
 #filter {
@@ -214,6 +220,14 @@ body.calc #loading {
   max-height: 80vh;
   max-height: calc( 100vh - 4em );
   width: 18em;
+}
+#new_network_options .filterset-section-title {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+#new_network_options {
+  padding: 0 0.25em;
+  text-align: center;
 }
 
 .filtersets {

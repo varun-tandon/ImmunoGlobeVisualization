@@ -34,30 +34,28 @@ node {
 }
 
 edge[interaction = "Activate"] {
-	line-color: #55efc4;
+	line-color: #EA2027;
 }
-
 edge[interaction = "Differentiate"] {
-	line-color: #ffeaa7;
+	line-color: #F79F1F;
 }
-
 edge[interaction = "Kill"] {
-	line-color: #fab1a0;
+	line-color: #A3CB38;
 }
 edge[interaction = "Inhibit"] {
-	line-color: #74b9ff;
+	line-color: #006266;
 }
 edge[interaction = "Polarize"] {
-	line-color: #ff7675;
+	line-color: #1289A7;
 }
 edge[interaction = "Recruit"] {
-	line-color: #a29bfe;
+	line-color: #1B1464;
 }
 edge[interaction = "Secrete"] {
-	line-color: #fd79a8;
+	line-color: #D980FA;
 }
 edge[interaction = "Survive"] {
-	line-color: #dfe6e9;
+	line-color: #6F1E51;
 }
 
 node[Node_Type = "Antigen"] {

@@ -37,9 +37,12 @@ $(function(){
 
   var allNodes = null;
   var allEles = null;
+  var allEdges = null;
   var lastHighlighted = null;
   var lastUnhighlighted = null;
-
+  
+  var new_network_nodes;
+  console.log(new_network_nodes);
   function getFadePromise( ele, opacity ){
     return ele.animation({
       style: { 'opacity': opacity },
@@ -59,10 +62,23 @@ $(function(){
     }) );
   };
 
+  function select_for_new_network( node ) { 
+    // color the node
+    node.addClass('colorRed');
+
+    // push it to the selected nodes
+    new_network_nodes = new_network_nodes.union(node.closedNeighborhood());
+
+  }
+
+  function remove_from_new_network(node) {
+    node.removeClass('colorRed');
+    new_network_nodes = new_network_nodes.difference(node);
+  }
   function highlight( node ){
-    var oldNhood = lastHighlighted;
 
     var nhood = lastHighlighted = node.closedNeighborhood();
+
     var others = lastUnhighlighted = cy.elements().not( nhood );
 
     var reset = function(){
@@ -243,9 +259,10 @@ $(function(){
       boxSelectionEnabled: false,
       autoungrabify: true
     });
-
+    new_network_nodes = cy.collection()
     allNodes = cy.nodes();
     allEles = cy.elements();
+    allEdges = cy.edges();
 
     cy.on('free', 'node', function( e ){
       var n = e.cyTarget;
@@ -261,15 +278,20 @@ $(function(){
       $('#search').blur();
     });
 
-    cy.on('select unselect', 'node', _.debounce( function(e){
+    cy.on('click unselect', 'node', _.debounce( function(e){
       var node = cy.$('node:selected');
-
       if( node.nonempty() ){
         showNodeInfo( node );
-
-        Promise.resolve().then(function(){
-          return highlight( node );
-        });
+        if (new_network_nodes.contains(node)) {
+          Promise.resolve().then(function(){
+            return remove_from_new_network( node );
+          });
+        } else {
+          Promise.resolve().then(function(){
+            return select_for_new_network( node );
+          });
+        }
+        
       } else {
         hideNodeInfo();
         clear();
@@ -359,24 +381,112 @@ $(function(){
   }, 50));
 
   $('#reset').on('click', function(){
-    if( isDirty() ){
-      clear();
-    } else {
-      allNodes.unselect();
+    // if( isDirty() ){
+    //   clear();
+    // } else {
+    //   allNodes.unselect();
 
-      hideNodeInfo();
+    //   hideNodeInfo();
 
-      cy.stop();
+    //   cy.stop();
 
-      cy.animation({
+    //   cy.animation({
+    //     fit: {
+    //       eles: cy.elements(),
+    //       padding: layoutPadding
+    //     },
+    //     duration: aniDur,
+    //     easing: easing
+    //   }).play();
+    // }
+    location.reload()
+  });
+
+  $("#new_network_from_selec").on('click', function () {
+    hideNodeInfo();
+    var nhood = new_network_nodes;
+    var others = cy.elements().not( nhood );
+    var reset = function(){
+      cy.batch(function(){
+        others.addClass('hidden');
+        nhood.removeClass('hidden');
+
+        allEles.removeClass('faded highlighted');
+
+        nhood.addClass('highlighted');
+
+        others.nodes().forEach(function(n){
+          var p = n.data('orgPos');
+
+          n.position({ x: p.x, y: p.y });
+        });
+      });
+
+      return Promise.resolve().then(function(){
+        if( isDirty() ){
+          return fit();
+        } else {
+          return Promise.resolve();
+        };
+      }).then(function(){
+        return Promise.delay( aniDur );
+      });
+    };
+
+    var runLayout = function(){
+      var p = new_network_nodes[0].data('orgPos');
+
+      var l = nhood.filter(':visible').makeLayout({
+        name: 'preset',
+        fit: false,
+        animate: true,
+        animationDuration: aniDur,
+        animationEasing: easing,
+        boundingBox: {
+          x1: p.x - 1,
+          x2: p.x + 1,
+          y1: p.y - 1,
+          y2: p.y + 1
+        },
+        avoidOverlap: true,
+        levelWidth: function(){ return 1; },
+        padding: layoutPadding
+      });
+
+      var promise = cy.promiseOn('layoutstop');
+
+      l.run();
+
+      return promise;
+    };
+
+    var fit = function(){
+      return cy.animation({
         fit: {
-          eles: cy.elements(),
+          eles: nhood.filter(':visible'),
           padding: layoutPadding
         },
-        duration: aniDur,
-        easing: easing
-      }).play();
-    }
+        easing: easing,
+        duration: aniDur
+      }).play().promise();
+    };
+
+    var showOthersFaded = function(){
+      return Promise.delay( 250 ).then(function(){
+        cy.batch(function(){
+          others.removeClass('hidden').addClass('faded');
+        });
+      });
+    };
+
+    return Promise.resolve()
+      .then( reset )
+      .then( runLayout )
+      .then( fit )
+      .then( showOthersFaded )
+    ;
+
+
   });
 
   $('#filters').on('click', 'input', function(){
@@ -422,6 +532,16 @@ $(function(){
     // Antibody
     var antibody = $('#antibody').is(':checked');
     
+    // Edges
+    var activate = $('#activate').is(':checked');
+    var differentiate = $('#differentiate').is(':checked');
+    var inhibit = $('#inhibit').is(':checked');
+    var kill = $('#kill').is(':checked');
+    var polarize = $('#polarize').is(':checked');
+    var recruit = $('#recruit').is(':checked');
+    var secrete = $('#secrete').is(':checked');
+    var survive = $('#survive').is(':checked');
+
 
     cy.batch(function(){
 
@@ -508,6 +628,47 @@ $(function(){
 
       });
 
+      allEdges.forEach(function( e ){
+        var iType = e.data('interaction');
+
+        e.removeClass('filtered');
+        // e.connectedNodes()[0].removeClass('filtered');
+        // e.connectedNodes()[1].removeClass('filtered');
+
+        var filter = function(){
+          e.addClass('filtered');
+          // var sourceNode = e.connectedNodes()[0];
+          // var targetNode = e.connectedNodes()[1];
+          // console.log(sourceNode.connectedNodes());
+          // if (sourceNode.isChildless() && sourceNode.isOrphan()) { 
+          //   sourceNode.addClass('filtered');
+          // }
+
+          // if (targetNode.isChildless() && targetNode.isOrphan()) {
+          //   targetNode.addClass('filtered');
+          // }
+        };
+
+        if (iType == 'Activate' && !activate) { 
+          filter();
+        } else if (iType == 'Differentiate' && !differentiate) { 
+          filter();
+        } else if (iType == 'Inhibit' && !inhibit) { 
+          filter();
+        } else if (iType == 'Kill' && !kill) { 
+          filter();
+        } else if (iType == 'Polarize' && !polarize) { 
+          filter();
+        } else if (iType == 'Recruit' && !recruit) { 
+          filter();
+        } else if (iType == 'Secrete' && !secrete) { 
+          filter();
+        } else if (iType == 'Survive' && !survive) { 
+          filter();
+        }
+
+      });
+
     });
 
   });
@@ -539,6 +700,35 @@ $(function(){
     },
 
     content: $('#filters')
+  });
+
+  $('#new_network_tools').qtip({
+    position: {
+      my: 'top center',
+      at: 'bottom center',
+      adjust: {
+        method: 'shift'
+      },
+      viewport: true
+    },
+
+    show: {
+      event: 'click'
+    },
+
+    hide: {
+      event: 'click'
+    },
+
+    style: {
+      classes: 'qtip-bootstrap qtip-filters',
+      tip: {
+        width: 16,
+        height: 8
+      }
+    },
+
+    content: $('#new_network_options')
   });
 
   $('#about').qtip({
