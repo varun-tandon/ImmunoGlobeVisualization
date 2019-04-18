@@ -27,8 +27,8 @@ $(function(){
   // templating for top left information
   var infoTemplate = Handlebars.compile([
     '<p class="ac-name">{{name}}</p>',
-    '<p class="ac-node-type">Type: {{Node_Type}}', 
-    '<p class="ac-node-suid">SUID: {{SUID}}', 
+    '<p class="ac-node-type">Type: {{Node_Type}}',
+    '<p class="ac-node-suid">SUID: {{SUID}}',
     '<p class="ac-node-subtype ">Subtype: {{Node_Subtype}}'
   ].join(''));
 
@@ -40,9 +40,11 @@ $(function(){
   var allEdges = null;
   var lastHighlighted = null;
   var lastUnhighlighted = null;
-  
+  var showOutgoers = true;
+  var showIncomers = true;
+
+  var selectedNodes;
   var new_network_nodes;
-  console.log(new_network_nodes);
   function getFadePromise( ele, opacity ){
     return ele.animation({
       style: { 'opacity': opacity },
@@ -62,18 +64,20 @@ $(function(){
     }) );
   };
 
-  function select_for_new_network( node ) { 
+  function select_for_new_network( node ) {
     // color the node
     node.addClass('colorRed');
 
     // push it to the selected nodes
-    new_network_nodes = new_network_nodes.union(node.closedNeighborhood());
+    // new_network_nodes = new_network_nodes.union(node.closedNeighborhood());
+    selectedNodes = selectedNodes.union(node);
 
   }
 
   function remove_from_new_network(node) {
     node.removeClass('colorRed');
-    new_network_nodes = new_network_nodes.difference(node);
+    // new_network_nodes = new_network_nodes.difference(node.closedNeighborhood());
+    selectedNodes = selectedNodes.difference(node);
   }
   function highlight( node ){
 
@@ -259,7 +263,8 @@ $(function(){
       boxSelectionEnabled: false,
       autoungrabify: true
     });
-    new_network_nodes = cy.collection()
+    new_network_nodes = cy.collection();
+    selectedNodes = cy.collection();
     allNodes = cy.nodes();
     allEles = cy.elements();
     allEdges = cy.edges();
@@ -282,7 +287,7 @@ $(function(){
       var node = cy.$('node:selected');
       if( node.nonempty() ){
         showNodeInfo( node );
-        if (new_network_nodes.contains(node)) {
+        if (selectedNodes.contains(node)) {
           Promise.resolve().then(function(){
             return remove_from_new_network( node );
           });
@@ -291,7 +296,7 @@ $(function(){
             return select_for_new_network( node );
           });
         }
-        
+
       } else {
         hideNodeInfo();
         clear();
@@ -402,8 +407,40 @@ $(function(){
     location.reload()
   });
 
+  $("#toggle_outgoing").on('click', function () {
+    var nhood = selectedNodes;
+    cy.batch(function(){
+          var outgoing_edges = nhood.outgoers(function(e) {
+              return (e.isEdge());
+          });
+          if (showOutgoers) {
+              outgoing_edges.addClass('hidden');
+          } else {
+              outgoing_edges.removeClass('hidden');
+          }
+          showOutgoers = !showOutgoers;
+    });
+  });
+
+  $("#toggle_incoming").on('click', function () {
+    var nhood = selectedNodes;
+    cy.batch(function(){
+          var incoming_edges = nhood.incomers(function(e) {
+              return (e.isEdge());
+          });
+          if (showIncomers) {
+              incoming_edges.addClass('hidden');
+          } else {
+              incoming_edges.removeClass('hidden');
+          }
+          showIncomers = !showIncomers;
+    });
+  });
+
   $("#new_network_from_selec").on('click', function () {
     hideNodeInfo();
+    new_network_nodes = selectedNodes.closedNeighborhood();
+    console.log(new_network_nodes);
     var nhood = new_network_nodes;
     var others = cy.elements().not( nhood );
     var reset = function(){
@@ -434,6 +471,7 @@ $(function(){
     };
 
     var runLayout = function(){
+
       var p = new_network_nodes[0].data('orgPos');
 
       var l = nhood.filter(':visible').makeLayout({
@@ -531,7 +569,7 @@ $(function(){
 
     // Antibody
     var antibody = $('#antibody').is(':checked');
-    
+
     // Edges
     var activate = $('#activate').is(':checked');
     var differentiate = $('#differentiate').is(':checked');
@@ -640,7 +678,7 @@ $(function(){
           // var sourceNode = e.connectedNodes()[0];
           // var targetNode = e.connectedNodes()[1];
           // console.log(sourceNode.connectedNodes());
-          // if (sourceNode.isChildless() && sourceNode.isOrphan()) { 
+          // if (sourceNode.isChildless() && sourceNode.isOrphan()) {
           //   sourceNode.addClass('filtered');
           // }
 
@@ -649,21 +687,21 @@ $(function(){
           // }
         };
 
-        if (iType == 'Activate' && !activate) { 
+        if (iType == 'Activate' && !activate) {
           filter();
-        } else if (iType == 'Differentiate' && !differentiate) { 
+        } else if (iType == 'Differentiate' && !differentiate) {
           filter();
-        } else if (iType == 'Inhibit' && !inhibit) { 
+        } else if (iType == 'Inhibit' && !inhibit) {
           filter();
-        } else if (iType == 'Kill' && !kill) { 
+        } else if (iType == 'Kill' && !kill) {
           filter();
-        } else if (iType == 'Polarize' && !polarize) { 
+        } else if (iType == 'Polarize' && !polarize) {
           filter();
-        } else if (iType == 'Recruit' && !recruit) { 
+        } else if (iType == 'Recruit' && !recruit) {
           filter();
-        } else if (iType == 'Secrete' && !secrete) { 
+        } else if (iType == 'Secrete' && !secrete) {
           filter();
-        } else if (iType == 'Survive' && !survive) { 
+        } else if (iType == 'Survive' && !survive) {
           filter();
         }
 

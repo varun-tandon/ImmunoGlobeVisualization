@@ -43,14 +43,17 @@
   <button id="reset" class="btn btn-default"><i class="fa fa-refresh"></i></button>
 
   <button id="filter" class="btn btn-default"><i class="fa fa-filter"></i></button>
-  <button id="new_network_tools" class="btn btn-default"><i class="fa fa-plus"></i></button>
+  <button id="new_network_tools" class="btn btn-default"><i class="fa fa-wrench"></i></button>
 
 
   <button id="about" class="btn btn-default"><i class="fa fa-info"></i></button>
 
   <div id="new_network_options">
-      <div class="filterset-section-title">New Network Options</div>
-    <button id="new_network_from_selec" class="btn btn-default"> New Network From Selected </button>
+      <div class="filterset-section-title">Tools</div>
+    <button id="new_network_from_selec" class="btn btn-default new_network_options_btn"> New Network From Selected </button>
+    <button id="toggle_outgoing" class="btn btn-default new_network_options_btn"> Toggle Outgoing Edges </button>
+    <button id="toggle_incoming" class="btn btn-default new_network_options_btn"> Toggle Incoming Edges </button>
+
   </div>
   <div id="about-content">
     <p>This app was made using <a target="_blank" href="http://js.cytoscape.org">Cytoscape.js <i class="fa fa-external-link"></i></a>.</p>
@@ -124,8 +127,10 @@
         <div class="color-box" style="background-color: #1B1464;"></div> <br />
         <input id="secrete" type="checkbox" checked></input><label for="secrete">Secrete</label>
         <div class="color-box" style="background-color: #D980FA;"></div> <br />
-        <input id="survive" type="checkbox" checked></input><label for="survive">Survive</label>      
+        <input id="survive" type="checkbox" checked></input><label for="survive">Survive</label>
         <div class="color-box" style="background-color: #6F1E51;"></div> <br />
+
+
       </div>
     </div>
 
