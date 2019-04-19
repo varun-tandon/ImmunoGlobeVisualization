@@ -2777,7 +2777,7 @@
         "Node_Type" : "Cytokine",
         "name" : "Keratinocyte growth factor",
         "SUID" : 140,
-        "Node_Subtype" : "Growth factors",
+        "Node_Subtype" : "Growth Factors",
         "selected" : false
       },
       "position" : {

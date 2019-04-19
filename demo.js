@@ -601,7 +601,7 @@ $(function(){
                !cell
             || (cType === 'Somatic' && !somatic)
             || (cType === 'Lymphocyte' && !lymphocyte)
-            || (cType === 'Myleoid' && !myeloid)
+            || (cType === 'Myeloid' && !myeloid)
             || (cType === 'Precursor' && !precursor)
             || (cType === 'APC' && !apc)
             || (cType === 'Blood' && !blood)
