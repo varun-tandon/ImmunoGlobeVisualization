@@ -116,7 +116,8 @@ body.calc #loading {
 
 .ac-node-type,
 .ac-node-suid,
-.ac-node-subtype
+.ac-node-subtype,
+.ac-node-crossref
 {
   font-size: 0.8em;
 }

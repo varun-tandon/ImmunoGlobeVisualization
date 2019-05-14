@@ -27,9 +27,10 @@ $(function(){
   // templating for top left information
   var infoTemplate = Handlebars.compile([
     '<p class="ac-name">{{name}}</p>',
-    '<p class="ac-node-type">Type: {{Node_Type}}',
-    '<p class="ac-node-suid">SUID: {{SUID}}',
-    '<p class="ac-node-subtype ">Subtype: {{Node_Subtype}}'
+    '<p class="ac-node-type">Type: {{Node_Type}} </p>',
+    '<p class="ac-node-suid">SUID: {{SUID}}</p> ',
+    '<p class="ac-node-subtype ">Subtype: {{Node_Subtype}} </p>',
+    '<p class="ac-node-crossref"> <a href={{Node_CrossRef}}> Cross Reference</a> </p>'
   ].join(''));
 
   // when both graph export json and style loaded, init cy
