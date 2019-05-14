@@ -150,7 +150,8 @@ body.calc #loading {
 #reset,
 #filter,
 #about, 
-#new_network_tools {
+#new_network_tools,
+#table {
   width: 3em;
   margin: 0.5em;
   position: absolute;
@@ -172,9 +173,27 @@ body.calc #loading {
   right: 4em;
 }
 
+#table {
+  top: 0;
+  right: 12em;
+} 
+
 #about {
   bottom: 0;
   left: 0;
+}
+
+#table_content {
+  width:100% !important;
+  height:auto;
+  background: white;
+}
+
+.modal-dialog {
+  width:auto;
+  margin-top: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #about-content p + p {

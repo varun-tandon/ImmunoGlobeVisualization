@@ -26,6 +26,10 @@
   <script src="fastclick.min.js"></script>
   <script src="jquery.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
   <script src="cytoscape.min.js"></script>
 
   <script src="jquery.qtip.min.js"></script>
@@ -41,6 +45,7 @@
   <script src="demo.js"></script>
 
   <button id="reset" class="btn btn-default"><i class="fa fa-refresh"></i></button>
+  <button id="table" class="btn btn-default" data-toggle="modal" data-target="#table_content"><i class="fa fa-table"></i></button>
 
   <button id="filter" class="btn btn-default"><i class="fa fa-filter"></i></button>
   <button id="new_network_tools" class="btn btn-default"><i class="fa fa-wrench"></i></button>
@@ -48,6 +53,31 @@
 
   <button id="about" class="btn btn-default"><i class="fa fa-info"></i></button>
 
+  <div id="table_content" class="modal fade" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+       <div class="modal-content ">
+        <table id="selection_table" class="display">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Shared Name</th>
+                  <th>Node Type</th>
+                  <th>Name</th>
+                  <th>SUID</th>
+                  <th>Node Subtype</th>
+                  <th>Immune Responses</th>
+                  <th>Node Cross Reference</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+  </div>
   <div id="new_network_options">
       <div class="filterset-section-title">Tools</div>
     <button id="new_network_from_selec" class="btn btn-default new_network_options_btn"> New Network From Selected </button>

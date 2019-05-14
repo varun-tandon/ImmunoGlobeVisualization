@@ -68,6 +68,31 @@ $(function(){
   function select_for_new_network( node ) {
     // color the node
     node.addClass('colorRed');
+    console.log(node.data)
+    var table = $('#selection_table').DataTable();
+    console.log(table.table().header())
+    var id = node.data('id');
+    var shared_name = node.data('shared_name');
+    var node_type = node.data('Node_Type');
+    var name = node.data('name');
+    var SUID =  node.data('SUID');
+    var node_subtype = node.data('Node_Subtype');
+    var crossref = node.data('Node_CrossRef');
+    var immuneprocesses = node.data('ImmuneProcesses');
+    table.row.add(
+       [
+         id ? id : 'N/A',
+         shared_name ? shared_name : 'N/A',
+         node_type ? node_type : 'N/A',
+         name ? name : 'N/A',
+         SUID ? SUID : 'N/A',
+         node_subtype ? node_subtype : 'N/A',
+         crossref ? crossref : 'N/A',
+         immuneprocesses ? immuneprocesses : 'N/A'
+       ]
+    ).draw();
+   
+
 
     // push it to the selected nodes
     // new_network_nodes = new_network_nodes.union(node.closedNeighborhood());
@@ -448,6 +473,7 @@ $(function(){
       cy.batch(function(){
         others.addClass('hidden');
         nhood.removeClass('hidden');
+        $('tbody').innerHTML('');
 
         allEles.removeClass('faded highlighted');
 
@@ -704,7 +730,7 @@ $(function(){
           filter();
         } else if (iType == 'Survive' && !survive) {
           filter();
-        }
+        } 
 
       });
 
@@ -740,6 +766,41 @@ $(function(){
 
     content: $('#filters')
   });
+
+  // $('#table').qtip({
+  //   position: {
+  //     my: 'top center',
+  //     at: 'bottom center',
+  //     adjust: {
+  //       method: 'shift'
+  //     },
+  //     viewport: true
+  //   },
+
+  //   show: {
+  //     event: 'click'
+  //   },
+
+  //   hide: {
+  //     event: 'click'
+  //   },
+
+  //   style: {
+  //     classes: 'qtip-bootstrap qtip-filters',
+  //     tip: {
+  //       width: 16,
+  //       height: 8
+  //     }
+  //   },
+
+  //   content: $('#table_content')
+  // });
+
+  $('#table').on('click', function () {
+    $('#selection_table').DataTable();
+  } );
+
+
 
   $('#new_network_tools').qtip({
     position: {
