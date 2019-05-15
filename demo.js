@@ -104,7 +104,11 @@ $(function(){
     node.removeClass('colorRed');
     var table = $('#selection_table').DataTable();
 
-    table.row(table.rows().length - 1).remove().draw();
+    var indexes = table.rows().eq( 0 ).filter( function (rowIdx) {
+      return table.cell( rowIdx, 0 ).data() === node.data('id') ? true : false;
+    } );
+    console.log(indexes)
+    table.rows(indexes).remove().draw();
     // new_network_nodes = new_network_nodes.difference(node.closedNeighborhood());
     selectedNodes = selectedNodes.difference(node);
   }
