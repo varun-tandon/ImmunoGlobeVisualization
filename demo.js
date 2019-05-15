@@ -102,6 +102,9 @@ $(function(){
 
   function remove_from_new_network(node) {
     node.removeClass('colorRed');
+    var table = $('#selection_table').DataTable();
+
+    table.row(table.rows().length - 1).remove().draw();
     // new_network_nodes = new_network_nodes.difference(node.closedNeighborhood());
     selectedNodes = selectedNodes.difference(node);
   }
@@ -473,7 +476,6 @@ $(function(){
       cy.batch(function(){
         others.addClass('hidden');
         nhood.removeClass('hidden');
-        $('tbody').innerHTML('');
 
         allEles.removeClass('faded highlighted');
 
