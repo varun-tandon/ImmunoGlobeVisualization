@@ -68,7 +68,7 @@ $(function(){
   function select_for_new_network( node ) {
     // color the node
     node.addClass('colorRed');
-    console.log(node.data)
+    // console.log(node.data)
     var table = $('#selection_table').DataTable();
     console.log(table.table().header())
     var id = node.data('id');
@@ -87,8 +87,8 @@ $(function(){
          name ? name : 'N/A',
          SUID ? SUID : 'N/A',
          node_subtype ? node_subtype : 'N/A',
-         crossref ? crossref : 'N/A',
-         immuneprocesses ? immuneprocesses : 'N/A'
+         immuneprocesses ? immuneprocesses : 'N/A',
+         crossref ? crossref : 'N/A'
        ]
     ).draw();
    
@@ -107,7 +107,6 @@ $(function(){
     var indexes = table.rows().eq( 0 ).filter( function (rowIdx) {
       return table.cell( rowIdx, 0 ).data() === node.data('id') ? true : false;
     } );
-    console.log(indexes)
     table.rows(indexes).remove().draw();
     // new_network_nodes = new_network_nodes.difference(node.closedNeighborhood());
     selectedNodes = selectedNodes.difference(node);
@@ -302,6 +301,8 @@ $(function(){
     allEles = cy.elements();
     allEdges = cy.edges();
 
+    
+
     cy.on('free', 'node', function( e ){
       var n = e.cyTarget;
       var p = n.position();
@@ -336,6 +337,7 @@ $(function(){
       }
 
     }, 100 ) );
+
 
   }
 
@@ -438,6 +440,8 @@ $(function(){
     //   }).play();
     // }
     location.reload()
+
+
   });
 
   $("#toggle_outgoing").on('click', function () {
@@ -469,27 +473,101 @@ $(function(){
           showIncomers = !showIncomers;
     });
   });
-
+  $("#loadEdgeTableButton").on('click', function() {
+    var table = $('#edge_table').DataTable();
+    table.clear().draw();
+    for (i = 0; i < allEdges.length; i++) {
+      var id = allEdges[i].data('id');
+      var source = allEdges[i].data('source');
+      var target = allEdges[i].data('target');
+      var shared_name = allEdges[i].data('shared_name');
+      var immuneprocesses = allEdges[i].data('ImmuneProcesses');
+      var shared_interactions = allEdges[i].data('shared_interactions');
+      var target_receptors = allEdges[i].data('TargetReceptors');
+      var name = allEdges[i].data('name');
+      var interactions = allEdges[i].data('interaction');
+      var SUID = allEdges[i].data('SUID');
+      var janeway_references = allEdges[i].data('JanewayReferences');
+      if(!allEdges[i].hasClass('filtered') && !allEdges[i].hasClass('hidden')) {
+        table.row.add(
+          [
+            id ? id : 'N/A',
+            source ? source : 'N/A',
+            target ? target : 'N/A',
+            shared_name ? shared_name : 'N/A',
+            immuneprocesses ? immuneprocesses : 'N/A',
+            shared_interactions ? shared_interactions : 'N/A',
+            target_receptors ? target_receptors : 'N/A',
+            name ? name : 'N/A',
+            interactions ? interactions : 'N/A',
+            SUID ? SUID : 'N/A',
+            janeway_references ? janeway_references : 'N/A' 
+          ]
+        ).draw()
+        console.log(id)
+      }
+    }
+  });
   $("#new_network_from_selec").on('click', function () {
+    
     hideNodeInfo();
     new_network_nodes = selectedNodes.closedNeighborhood();
-    console.log(new_network_nodes);
+    // console.log(new_network_nodes);
     var nhood = new_network_nodes;
+
+    // var table = $('#edge_table').DataTable();
+    // table.clear().draw();
+    // for (i = 0; i < nhood.edges().length; i++) {
+    //   console.log(i);
+    //   var id = nhood.edges()[i].data('id');
+    //   var source = nhood.edges()[i].data('source');
+    //   var target = nhood.edges()[i].data('target');
+    //   var shared_name = nhood.edges()[i].data('shared_name');
+    //   var immuneprocesses = nhood.edges()[i].data('ImmuneProcesses');
+    //   var shared_interactions = nhood.edges()[i].data('shared_interactions');
+    //   var target_receptors = nhood.edges()[i].data('TargetReceptors');
+    //   var name = nhood.edges()[i].data('name');
+    //   var interactions = nhood.edges()[i].data('interaction');
+    //   var SUID = nhood.edges()[i].data('SUID');
+    //   var janeway_references = nhood.edges()[i].data('JanewayReferences');
+    //   table.row.add(
+    //     [
+    //       id ? id : 'N/A',
+    //       source ? source : 'N/A',
+    //       target ? target : 'N/A',
+    //       shared_name ? shared_name : 'N/A',
+    //       immuneprocesses ? immuneprocesses : 'N/A',
+    //       shared_interactions ? shared_interactions : 'N/A',
+    //       target_receptors ? target_receptors : 'N/A',
+    //       name ? name : 'N/A',
+    //       interactions ? interactions : 'N/A',
+    //       SUID ? SUID : 'N/A',
+    //       janeway_references ? janeway_references : 'N/A' 
+    //     ]
+    //   ).draw()
+    // }
+
     var others = cy.elements().not( nhood );
+    other_edges = others.edges();
+    // console.log(other_edges)
+    for (i = 0; i < other_edges.length; i++) {
+      other_edges[i].addClass('hidden');
+    }
+
     var reset = function(){
       cy.batch(function(){
         others.addClass('hidden');
         nhood.removeClass('hidden');
-
+        
         allEles.removeClass('faded highlighted');
 
         nhood.addClass('highlighted');
-
         others.nodes().forEach(function(n){
           var p = n.data('orgPos');
 
           n.position({ x: p.x, y: p.y });
         });
+        
       });
 
       return Promise.resolve().then(function(){
@@ -708,6 +786,11 @@ $(function(){
 
         var filter = function(){
           e.addClass('filtered');
+          // var edge_table = $('#edge_table').DataTable();
+          // var indexes = edge_table.rows().eq( 0 ).filter( function (rowIdx) {
+          //   return edge_table.cell( rowIdx, 0 ).data() === e.data('id') ? true : false;
+          // } );
+          // edge_table.rows(indexes).remove().draw();
           // var sourceNode = e.connectedNodes()[0];
           // var targetNode = e.connectedNodes()[1];
           // console.log(sourceNode.connectedNodes());
@@ -823,7 +906,7 @@ $(function(){
     },
 
     hide: {
-      event: 'click'
+      event: 'unfocus',
     },
 
     style: {

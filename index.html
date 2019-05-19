@@ -56,6 +56,7 @@
   <div id="table_content" class="modal fade" role="dialog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
        <div class="modal-content ">
+        <h3> Nodes Table </h3>
         <table id="selection_table" class="display">
           <thead>
               <tr>
@@ -72,9 +73,30 @@
           <tbody>
           </tbody>
         </table>
+        <h3> Edges Table </h3>
+        <table id="edge_table" class="display">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Source</th>
+                  <th>Target</th>
+                  <th>Shared Name</th>
+                  <th>ImmuneProcesses</th>
+                  <th>Shared Interaction</th>
+                  <th>Target Receptors</th>
+                  <th>Name</th>
+                  <th>Interaction</th>
+                  <th>SUID</th>
+                  <th>Janeway References </th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
     </div>
      <div class="modal-footer">
+        <button id="loadEdgeTableButton" type="button" class="btn btn-primary">Load/Reload Edge Table (may take a few seconds)</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
   </div>
