@@ -488,7 +488,7 @@ $(function(){
       var interactions = allEdges[i].data('interaction');
       var SUID = allEdges[i].data('SUID');
       var janeway_references = allEdges[i].data('JanewayReferences');
-      if(!allEdges[i].hasClass('filtered') && !allEdges[i].hasClass('hidden')) {
+      if(!allEdges[i].hasClass('filtered') && !allEdges[i].hasClass('hidden') && !allEdges[i].hasClass('permanentlyhidden')) {
         table.row.add(
           [
             id ? id : 'N/A',
@@ -551,7 +551,7 @@ $(function(){
     other_edges = others.edges();
     // console.log(other_edges)
     for (i = 0; i < other_edges.length; i++) {
-      other_edges[i].addClass('hidden');
+      other_edges[i].addClass('permanentlyhidden');
     }
 
     var reset = function(){
