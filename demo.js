@@ -82,17 +82,12 @@ $(function(){
     table.row.add(
        [
          id ? id : 'N/A',
-         shared_name ? shared_name : 'N/A',
-         node_type ? node_type : 'N/A',
          name ? name : 'N/A',
-         SUID ? SUID : 'N/A',
+         node_type ? node_type : 'N/A',
          node_subtype ? node_subtype : 'N/A',
-         immuneprocesses ? immuneprocesses : 'N/A',
          crossref ? crossref : 'N/A'
        ]
     ).draw();
-   
-
 
     // push it to the selected nodes
     // new_network_nodes = new_network_nodes.union(node.closedNeighborhood());
@@ -474,16 +469,28 @@ $(function(){
     });
   });
   $("#loadEdgeTableButton").on('click', function() {
+    $("#edges_div").css('display', 'block');
     var table = $('#edge_table').DataTable();
     table.clear().draw();
     for (i = 0; i < allEdges.length; i++) {
       var id = allEdges[i].data('id');
       var source = allEdges[i].data('source');
       var target = allEdges[i].data('target');
+      var sourceNode = null;
+      var targetNode = null;
+      for (j = 0; j < allNodes.length; j++) {
+        if (allNodes[j].data('id') == source) {
+          sourceNode = allNodes[j].data('name');
+        }
+        if (allNodes[j].data('id') == target) {
+          targetNode = allNodes[j].data('name');
+        }
+      }
       var shared_name = allEdges[i].data('shared_name');
       var immuneprocesses = allEdges[i].data('ImmuneProcesses');
       var shared_interactions = allEdges[i].data('shared_interactions');
       var target_receptors = allEdges[i].data('TargetReceptors');
+      var source_receptors = allEdges[i].data('SourceReceptors');
       var name = allEdges[i].data('name');
       var interactions = allEdges[i].data('interaction');
       var SUID = allEdges[i].data('SUID');
@@ -492,15 +499,16 @@ $(function(){
         table.row.add(
           [
             id ? id : 'N/A',
-            source ? source : 'N/A',
-            target ? target : 'N/A',
-            shared_name ? shared_name : 'N/A',
-            immuneprocesses ? immuneprocesses : 'N/A',
-            shared_interactions ? shared_interactions : 'N/A',
-            target_receptors ? target_receptors : 'N/A',
             name ? name : 'N/A',
-            interactions ? interactions : 'N/A',
-            SUID ? SUID : 'N/A',
+            sourceNode ? sourceNode : 'N/A',
+            targetNode ? targetNode : 'N/A',
+            // shared_name ? shared_name : 'N/A',
+            // shared_interactions ? shared_interactions : 'N/A',
+            source_receptors ? source_receptors : 'N/A',
+            target_receptors ? target_receptors : 'N/A',
+            immuneprocesses ? immuneprocesses : 'N/A',
+            // interactions ? interactions : 'N/A',
+            // SUID ? SUID : 'N/A',
             janeway_references ? janeway_references : 'N/A' 
           ]
         ).draw()
