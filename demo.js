@@ -501,13 +501,13 @@ $(function(){
             id ? id : 'N/A',
             name ? name : 'N/A',
             sourceNode ? sourceNode : 'N/A',
+            interactions ? interactions : 'N/A',
             targetNode ? targetNode : 'N/A',
             // shared_name ? shared_name : 'N/A',
             // shared_interactions ? shared_interactions : 'N/A',
             source_receptors ? source_receptors : 'N/A',
             target_receptors ? target_receptors : 'N/A',
             immuneprocesses ? immuneprocesses : 'N/A',
-            // interactions ? interactions : 'N/A',
             // SUID ? SUID : 'N/A',
             janeway_references ? janeway_references : 'N/A' 
           ]
