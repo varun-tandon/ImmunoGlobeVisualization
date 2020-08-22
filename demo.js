@@ -12,7 +12,7 @@ $(function(){
 
   // get exported json from cytoscape desktop via ajax
   var graphP = $.ajax({
-    url: './networks.json',
+    url: './networks_new.json',
     type: 'GET',
     dataType: 'json'
   });
@@ -354,12 +354,39 @@ $(function(){
         return str.match( q );
       }
 
-      var fields = ['name', 'Node_Type' , 'shared_name'];
+      var fields = [
+          'name',
+          'Node_Type' ,
+          'shared_name',
+          'alternateName0',
+          'alternateName1',
+          'alternateName2',
+          'alternateName3',
+          'alternateName4',
+          'alternateName5',
+          'alternateName6',
+          'alternateName7',
+          'alternateName8',
+          'alternateName9',
+          'alternateName10',
+          'alternateName11',
+          'alternateName12',
+          'alternateName13',
+          'alternateName14',
+          'alternateName15',
+          'alternateName16',
+          'alternateName17',
+          'alternateName18',
+          'alternateName19',
+        ];
 
       function anyFieldMatches( n ){
         for( var i = 0; i < fields.length; i++ ){
           var f = fields[i];
-          if( matches( n.data(f), query ) ){
+          if (!n.data(f)){
+              return false;
+          }
+          else if( matches( n.data(f), query ) ){
             n.addClass('colorRed');
             n.addClass('selected');
             return true;

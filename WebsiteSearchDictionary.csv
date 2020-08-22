@@ -1,0 +1,160 @@
+NodeName_Harmonized,alternateNames
+CCL1,Chemokine CCL1;chemokine (C-C motif) ligand 1;P500;SISe;TCA3;I-309;SCYA1;
+CCL11,Chemokine CCL11;chemokine (C-C motif) ligand 11;SCYA11;
+CCL12,Chemokine CCL12;chemokine (C-C motif) ligand 12;Scya12;
+CCL13,Chemokine CCL13;chemokine (C-C motif) ligand 13;NCC1;CKb10;MCP-4;NCC-1;SCYL1;SCYA13;
+CCL14,Chemokine CCL14;chemokine (C-C motif) ligand 14;CC-1;CC-3;CKB1;MCIF;NCC2;SY14;HCC-1;HCC-3;NCC-2;SCYL2;SCYA14;HCC-1(1-74);HCC-1/HCC-3;
+CCL15,Chemokine CCL15;chemokine (C-C motif) ligand 15;LKN1;NCC3;SY15;HCC-2;LKN-1;MIP-5;NCC-3;SCYL3;MIP-1D;MRP-2B;SCYA15;HMRP-2B;MIP-1 delta;
+CCL16,Chemokine CCL16;chemokine (C-C motif) ligand 16;LEC;LMC;NCC4;CKb12;HCC-4;LCC-1;Mtn-1;NCC-4;SCYL4;ILINCK;SCYA16;
+CCL17,Chemokine CCL17;chemokine (C-C motif) ligand 17;TARC;ABCD-2;SCYA17;A-152E5.3;
+CCL18,Chemokine CCL18;chemokine (C-C motif) ligand 18 (pulmonary and activation-regulated);CKb7;PARC;AMAC1;DCCK1;MIP-4;AMAC-1;DC-CK1;SCYA18;
+CCL19,Chemokine CCL19;chemokine (C-C motif) ligand 19;ELC;CKb11;MIP3B;MIP-3b;SCYA19;
+CCL2,Chemokine CCL2;chemokine (C-C motif) ligand 2;HC11;MCAF;MCP1;MCP-1;SCYA2;GDCF-2;SMC-CF;HSMCR30;
+CCL20,Chemokine CCL20;chemokine (C-C motif) ligand 20;CKb4;LARC;ST38;MIP3A;MIP-3a;SCYA20;MIP-3-alpha;
+CCL21,Chemokine CCL21;chemokine (C-C motif) ligand 21;ECL;SLC;CKb9;TCA4;6Ckine;SCYA21;
+CCL22,Chemokine CCL22;chemokine (C-C motif) ligand 22;MDC;ABCD-1;SCYA22;STCP-1;DC/B-CK;A-152E5.1;
+CCL23,Chemokine CCL23;chemokine (C-C motif) ligand 23;CKb8;MIP3;Ckb-8;MIP-3;MPIF-1;SCYA23;Ckb-8-1;hmrp-2a;CK-BETA-8;
+CCL24,Chemokine CCL24;chemokine (C-C motif) ligand 24;Ckb-6;MPIF2;MPIF-2;SCYA24;
+CCL25,Chemokine CCL25;chemokine (C-C motif) ligand 25;TECK;Ckb15;SCYA25;
+CCL26,Chemokine CCL26;chemokine (C-C motif) ligand 26;IMAC;TSC-1;MIP-4a;SCYA26;MIP-4alpha;
+CCL27,Chemokine CCL27;chemokine (C-C motif) ligand 27;ALP;ILC;CTAK;CTACK;PESKY;ESKINE;SCYA27;
+CCL28,chemokine (C-C motif) ligand 28
+CCL3,Chemokine CCL3;chemokine (C-C motif) ligand 3;MIP1A;SCYA3;G0S19-1;LD78ALPHA;MIP-1-alpha;
+CCL4,Chemokine CCL4;chemokine (C-C motif) ligand 4;ACT2;G-26;HC21;LAG1;LAG-1;MIP1B;SCYA2;SCYA4;MIP1B1;AT744.1;MIP-1-beta;
+CCL5,Chemokine CCL5;chemokine (C-C motif) ligand 5;SISd;eoCP;SCYA5;RANTES;TCP228;D17S136E;SIS-delta;
+CCL6,Chemokine CCL6;chemokine (C-C motif) ligand 6;C10;MRP-1;SCYA6;
+CCL7,Chemokine CCL7;chemokine (C-C motif) ligand 7;FIC;MARC;MCP3;NC28;MCP-3;SCYA6;SCYA7;
+CCL8,Chemokine CCL8;chemokine (C-C motif) ligand 8;HC14;MCP2;MCP-2;SCYA8;SCYA10;
+CCL9,Chemokine CCL9;chemokine (C-C motif) ligand 9;CCL10;Scya9;Scya10;
+CX3CL1,Chemokine CX3CL1;chemokine (C-X3-C motif) ligand 1;NTN;NTT;CXC3;CXC3C;SCYD1;ABCD-3;C3Xkine;fractalkine;neurotactin;
+CXCL1,"Chemokine CXCL1;chemokine (C-X-C motif) ligand 1 (melanoma growth stimulating activity, alpha);FSP;GRO1;GROa;MGSA;NAP-3;SCYB1;MGSA-a;"
+CXCL10,Chemokine CXCL10;chemokine (C-X-C motif) ligand 10;C7;IFI10;INP10;IP-10;crg-2;mob-1;SCYB10;gIP-10;
+CXCL11,Chemokine CXCL11;chemokine (C-X-C motif) ligand 11;IP9;H174;IP-9;b-R1;I-TAC;SCYB11;SCYB9B;
+CXCL12,Chemokine CXCL12;chemokine (C-X-C motif) ligand 12;IRH;PBSF;SDF1;TLSF;TPAR1;SCYB12;
+CXCL13,Chemokine CXCL13;chemokine (C-X-C motif) ligand 13;BLC;BCA1;ANGIE;BCA-1;BLR1L;ANGIE2;SCYB13;
+CXCL14,Chemokine CXCL14;chemokine (C-X-C motif) ligand 14;KEC;KS1;BMAC;BRAK;NJAC;MIP2G;MIP-2g;SCYB14;
+CXCL15,Chemokine CXCL15;chemokine (C-X-C motif) ligand 15;weche;lungkine;
+CXCL16,Chemokine CXCL16;chemokine (C-X-C motif) ligand 16;SRPSOX;CXCLG16;SR-PSOX;
+CXCL2,Chemokine CXCL2;chemokine (C-X-C motif) ligand 2;GRO2;GROb;MIP2;MIP2A;SCYB2;MGSA-b;MIP-2a;CINC-2a;
+CXCL3,Chemokine CXCL3;chemokine (C-X-C motif) ligand 3;GRO3;GROg;MIP2B;SCYB3;MIP-2b;CINC-2b;
+CXCL4,Chemokine CXCL4;platelet factor 4;PF-4;CXCL4;SCYB4;PF4
+CXCL5,Chemokine CXCL5;chemokine (C-X-C motif) ligand 5;SCYB5;ENA-78;
+CXCL6,Chemokine CXCL6;chemokine (C-X-C motif) ligand 6;GCP2;CKA-3;GCP-2;SCYB6;
+CXCL7,Chemokine CXCL7;pro-platelet basic protein (chemokine (C-X-C motif) ligand 7);PBP;TC1;TC2;TGB;LDGF;MDGF;TGB1;B-TG1;CTAP3;CXCL7;NAP-2;SCYB7;THBGB;LA-PF4;THBGB1;Beta-TG;CTAPIII;CTAP-III;
+CXCL8,Chemokine CXCL8;chemokine (C-X-C motif) ligand 8;IL8;NAF;GCP1;LECT;LUCT;NAP1;GCP-1;LYNAP;MDNCF;MONAP;NAP-1;
+CXCL9,Chemokine CXCL9;chemokine (C-X-C motif) ligand 9;CMK;MIG;Humig;SCYB9;crg-10;
+GCSF,Granulocyte Colony-Stimulating Factor;colony stimulating factor 3 (granulocyte);GCSF;CSF3OS;C17orf33;CSF3
+GMCSF,Granulocyte-Macrophage Colony-Stimulating Factor;colony stimulating factor 2 (granulocyte-macrophage);CSF2
+IFNa,"Interferon-alpha 1;interferon, alpha 1;IFL;IFN;IFNA1;IFNA13;IFN-ALPHA;IFN-alphaD;"
+IFNb,"Interferon-beta;interferon, beta 1, fibroblast;IFB;IFF;IFNB1;"
+IFNg,"Interferon-gamma;interferon, gamma;IFG;IFI;"
+IL1,Interleukin-1
+IL10,Interleukin-10;interleukin 10;CSIF;TGIF;GVHDS;IL-10;IL10A;
+IL11,Interleukin-11;interleukin 11;AGIF;IL-11;
+IL12,Interleukin-12
+IL13,Interleukin-13;interleukin 13;P600;IL-13;
+IL15,Interleukin-15;interleukin 15;IL-15;
+IL16,Interleukin-16;interleukin 16;LCF;NIL16;PRIL16;prIL-16;
+IL17A,Interleukin-17a;interleukin 17A;IL17;CTLA8;IL-17;IL-17A;
+IL17F,Interleukin-17f;interleukin 17F;ML1;ML-1;CANDF6;IL-17F;
+IL18,Interleukin-18;interleukin 18;IGIF;IL-18;IL-1g;IL1F4;
+IL19,Interleukin-19;interleukin 19;MDA1;NG.1;ZMDA1;IL-10C;
+IL1a,"Interleukin-1 alpha;interleukin 1, alpha;IL1;IL-1A;IL1F1;IL1-ALPHA;"
+IL1b,"Interleukin-1 beta;interleukin 1, beta;IL-1;IL1F2;IL1-BETA;"
+IL1RA,"CD121a;interleukin 1 receptor, type I;CD121A;D2S1473;IL-1R-alpha;IL1R;IL1R1;P80;"
+IL2,Interleukin-2;interleukin 2;IL-2;TCGF;lymphokine;
+IL20,Interleukin-20;interleukin 20;IL-20;IL10D;ZCYTO10;
+IL21,Interleukin-21;interleukin 21;Za11;IL-21;CVID11;
+IL22,Interleukin-22;interleukin 22;TIFa;IL-21;IL-22;ILTIF;IL-TIF;IL-D110;zcyto18;TIFIL-23;
+IL23,"Interleukin-23 Subunit p19;interleukin 23, alpha subunit p19;P19;SGRF;IL-23;IL-23A;IL23P19;IL23A"
+IL24,Interleukin-24;interleukin 24;C49A;FISP;MDA7;MOB5;ST16;IL10B;
+IL25,Interleukin-25;interleukin 25;IL17E;
+IL26,Interleukin-26;interleukin 26;AK155;IL-26;
+IL27,Interleukin-27 alpha;interleukin 27;p28;IL30;IL-27;IL27A;IL-27A;IL27p28;
+IL28,Interleukin-28
+IL29,"Interleukin-29;interferon, lambda 1;IL-29;IFNL1"
+IL3,Interleukin-3;interleukin 3;IL-3;MCGF;MULTI-CSF;
+IL31,Interleukin-31;interleukin 31;IL-31;
+IL32,Interleukin-32;interleukin 32;NK4;TAIF;TAIFa;TAIFb;TAIFc;TAIFd;IL-32beta;IL-32alpha;IL-32delta;IL-32gamma;
+IL33,Interleukin-33;interleukin 33;DVS27;IL1F11;NF-HEV;NFEHEV;C9orf26;
+IL35,Interleukin-35
+IL36,Interleukin-36
+IL37,Interleukin-37
+IL4,Interleukin-4;interleukin 4;BSF1;IL-4;BCGF1;BSF-1;BCGF-1;
+IL5,Interleukin-5;interleukin 5;EDF;TRF;IL-5;
+IL6,Interleukin-6;interleukin 6;HGF;HSF;BSF2;IL-6;IFNB2;
+IL7,Interleukin-7;interleukin 7;IL-7;
+IL9,Interleukin-9;interleukin 9;P40;HP40;IL-9;
+LTa,Lymphotoxin-alpha;lymphotoxin alpha;LT;TNFB;TNFSF1;
+LTb,"Lymphotoxin-beta;lymphotoxin beta (TNF superfamily, member 3);p33;TNFC;TNFSF3;"
+SCF,Stem Cell Factor;KIT ligand;SF;MGF;KITLG;FPH2;KL-1;Kitl;SHEP7;
+TGFa,"Transforming Growth Factor alpha;transforming growth factor, alpha;TFGA;"
+TGFb,"Transforming Growth Factor beta1;transforming growth factor, beta 1;CED;LAP;DPD1;TGFB1;TGFbeta;"
+TNFa,Tumor Necrosis Factor-alpha;tumor necrosis factor;DIF;TNF;TNFSF2;TNF-alpha;
+TSLP,Thymic stromal lymphopoietin
+VEGF,Vascular Endothelial Growth Factor
+CD40L,CD40 ligand;CD40 ligand;IGM;IMD3;TRAP;gp39;CD154;CD40LG;HIGM1;T-BAM;TNFSF5;hCD40L;
+CD30L,"Tumor necrosis factor ligand superfamily member 8;tumor necrosis factor (ligand) superfamily, member 8;CD153;CD30LG;TNFSF8"
+41BBL,"Tumor necrosis factor ligand superfamily member 9;tumor necrosis factor (ligand) superfamily, member 9;CD137L;4-1BB-L;TNFSF9"
+Trail,"Tumor necrosis factor ligand superfamily member 10;tumor necrosis factor (ligand) superfamily, member 10;TL2;APO2L;CD253;TNFSF10;Apo-2L;"
+OPGL,"Tumor necrosis factor ligand superfamily member 11;tumor necrosis factor (ligand) superfamily, member 11;ODF;TNFSF11;sOdf;CD254;OPTB2;RANKL;TRANCE;hRANKL2;"
+APRIL,"Tumor necrosis factor ligand superfamily member 13;tumor necrosis factor (ligand) superfamily, member 13;TNFSF13;CD256;TALL2;ZTNF2;TALL-2;TRDL-1;UNQ383/PRO715;"
+TWEAK,"Tumor necrosis factor ligand superfamily member 12;tumor necrosis factor (ligand) superfamily, member 12;APO3L;DR3LG;TNFSF12"
+LIGHT,"Tumor necrosis factor ligand superfamily member 14;tumor necrosis factor (ligand) superfamily, member 14;LTg;TR2;CD258;HVEML;TNFSF14"
+BAFF,"B-Cell Activating Factor;tumor necrosis factor (ligand) superfamily, member 13b;DTL;TNFSF13B;BLYS;CD257;TALL1;THANK;ZTNF4;TALL-1;TNFSF20;"
+MIF,Macrophage Migration-Inhibitory Factor;macrophage migration inhibitory factor (glycosylation-inhibiting factor);GIF;GLIF;MMIF;
+LIF,Leukemia Inhibitory Factor;leukemia inhibitory factor;CDF;DIA;HILDA;MLPLI;
+OSM,Oncostatin M;oncostatin M
+MCSF,Macrophage Colony-Stimulating Factor 1;colony stimulating factor 1 (macrophage);CSF1;CSF-1;
+S1P,Sphingosine-1-phosphate
+Keratinocyte growth factor,
+B,
+Basophil,
+BM Stromal,Bone marrow stromal
+Common Lymphoid Progenitor,CLP
+Common Myeloid Progenitor,CMP
+DC,Dendritic cell
+Endothelial,
+Eosinophil,
+Epithelial,
+Erythroblast,
+Erythrocyte,
+FDC,Follicular dendritic cell
+Fibroblast,
+Granulocyte Progenitor,
+Hematopoietic,
+Hepatocyte,
+ILC,Innate lymphoid cell
+ILC1,Type 1 innate lymphoid cell
+ILC2,Type 2 innate lymphoid cell
+ILC3,Type 3 innate lymphoid cell
+Keratinocyte,
+LTi,Lymphoid tissue inducer cell
+Macrophage,
+Mast,
+Megakaryocyte,
+Microglia,
+Monocyte,
+Neutrophil,
+NK,
+pDC,plasmacytoid dendritic cell
+Platelet,
+Smooth muscle,
+T Progenitor,
+T_abCD4CD8,CD4+ CD8+ double positive alpha beta T cell
+T_CD4,Naïve CD4+ T cell; Helper T cell
+T_CD4_memory,Memory CD4+ T cell
+T_CD8,Naïve CD8+ T cell
+T_CD8_memory,Memory CD8+ T cell
+IEL,Intraepithelial lymphocyte
+T_Cytotoxic,Cytotoxic T cell
+T_gd,gamma delta T cell
+T_MAIT,Mucosal associated invariant T cell
+T_NKT,Natural killer T cell
+T_reg,Regulatory T cell
+Tfh,Follicular Helper T cell
+Th1,T helper Type 1 cell
+Th17,T helper Type 17 cell
+Th2,T helper Type 2 cell
+Th22,T helper Type 22 cell
+Tumor,
