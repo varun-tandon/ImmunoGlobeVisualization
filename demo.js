@@ -877,7 +877,7 @@ $(function(){
     },
 
     hide: {
-      event: 'click'
+      event: 'unfocus'
     },
 
     style: {
